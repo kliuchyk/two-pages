@@ -309,8 +309,12 @@ template {
   box-sizing: border-box; }
 
 .section-inner {
-  width: 75%;
+  max-width: 1200px;
   margin: 0 auto; }
+
+.section-outer {
+  padding-left: 20px;
+  padding-right: 20px; }
 
 .section-header {
   height: 85px;
@@ -424,9 +428,9 @@ template {
       background: #f44902; }
   .section-plans__item.trial {
     border: 2px solid #3d8f85; }
-  .section-plans__item.annual {
+  .section-plans__item.annual-plan {
     padding-top: 106px; }
-    .section-plans__item.annual .section-plans__item_price {
+    .section-plans__item.annual-plan .section-plans__item_price {
       margin-top: 27px; }
 
 .section-plans__info {
@@ -471,6 +475,14 @@ template {
     top: 15px;
     left: -20px; }
 
+@media (max-width: 767px) {
+  .section-plans .section-inner {
+    flex-direction: column; }
+  .section-plans__info {
+    order: -1; }
+  .section-plans__item, .section-plans__info {
+    margin: 0 auto 30px; } }
+
 .section-comments__list {
   display: flex; }
   .section-comments__list-item {
@@ -496,6 +508,15 @@ template {
       color: #646464;
       letter-spacing: 0.3px;
       padding-right: 30px; }
+  @media (max-width: 767px) {
+    .section-comments__list {
+      flex-direction: column; }
+      .section-comments__list-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center; }
+        .section-comments__list-item_logo {
+          margin-bottom: 20px; } }
 
 .section-footer {
   background: #2a1818;
@@ -535,8 +556,12 @@ template {
     font-size: 13px;
     line-height: 71px;
     text-align: center; }
+  @media (max-width: 767px) {
+    .section-footer .link + .link::before {
+      padding: 0 15px; } }
 
-.section-plans.form-page .annual {
+.section-plans.form-page .annual-plan,
+.section-plans.form-page .limited-offer {
   display: none; }
 
 .section-plans .form-wrapper {
@@ -570,7 +595,7 @@ template {
     .section-plans .form-wrapper .section-plans__item_price {
       font-size: 16px;
       line-height: 23px;
-      padding-left: 15px;
+      padding-left: 5px;
       display: inline-block; }
     .section-plans .form-wrapper .section-plans__item_description {
       font-size: 10px;
@@ -608,6 +633,15 @@ template {
       .section-plans .form-wrapper .section-plans__item .inner-wrapper .plan-description {
         display: flex;
         align-items: center; }
+    .section-plans .form-wrapper .section-plans__item.annual-plan {
+      padding-top: 0; }
+      .section-plans .form-wrapper .section-plans__item.annual-plan .section-plans__item_price {
+        margin-top: 0;
+        padding: 0;
+        font-size: 18px;
+        line-height: 26px; }
+        .section-plans .form-wrapper .section-plans__item.annual-plan .section-plans__item_price .postfix {
+          margin-left: 5px; }
 
 .section-cards {
   width: 470px;
@@ -631,7 +665,16 @@ template {
     margin-top: 5px;
     margin-right: 10px;
     font-size: 15px;
-    color: #b6b6b6; }
+    color: #333; }
+    .section-form .input::placeholder,
+    .section-form .select::placeholder {
+      color: #b6b6b6; }
+    .section-form .input:valid,
+    .section-form .select:valid {
+      border-color: #3d8f85; }
+    .section-form .input:invalid,
+    .section-form .select:invalid {
+      border-color: #e24c2c; }
   .section-form .label {
     font-size: 10px;
     line-height: 14px; }
@@ -641,13 +684,62 @@ template {
   .section-form .fname,
   .section-form .lname {
     margin-bottom: 15px; }
-  .section-form .exp-month .input {
-    width: 130px; }
+  .section-form .card-number {
+    position: relative; }
+    .section-form .card-number .input:not(:placeholder-shown) {
+      width: 220px;
+      margin-right: 40px; }
+    .section-form .card-number .img-success {
+      display: none;
+      position: absolute;
+      right: 12px;
+      bottom: 8px; }
+    .section-form .card-number .img-fail {
+      display: none;
+      position: absolute;
+      right: 12px;
+      bottom: 8px; }
+    .section-form .card-number .error-msg {
+      display: none;
+      color: #e24c2c;
+      font-size: 10px;
+      line-height: 14px;
+      margin-top: 5px;
+      position: absolute; }
+  .section-form .fname {
+    position: relative; }
+    .section-form .fname .input:not(:placeholder-shown) {
+      width: 220px;
+      margin-right: 40px; }
+  .section-form .lname {
+    position: relative; }
+    .section-form .lname .input:not(:placeholder-shown) {
+      width: 220px;
+      margin-right: 40px; }
+  .section-form .exp-month {
+    position: relative; }
+    .section-form .exp-month .select {
+      width: 130px;
+      background: #fff;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: url("../assets/arrow-down.png") no-repeat right; }
   .section-form .exp-year {
     position: relative;
     margin-left: 10px; }
+    .section-form .exp-year .img-success {
+      display: none;
+      position: absolute;
+      right: 12px;
+      bottom: 8px; }
+    .section-form .exp-year .img-fail {
+      display: none;
+      position: absolute;
+      right: 12px;
+      bottom: 8px; }
     .section-form .exp-year .select {
       width: 100px;
+      margin-right: 0;
       background: #fff;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -674,17 +766,19 @@ template {
     font-weight: bold;
     padding: 10px 30px;
     text-decoration: none;
-    opacity: 0.5;
     margin-right: 15px; }
+    .section-form .secure-info .confirm-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed; }
   .section-form .secure-info .description {
     font-size: 11px;
     line-height: 17px;
     color: #b6b6b6; }
     .section-form .secure-info .description::before {
       content: "";
-      background: url("../assets/safe.png") no-repeat;
+      background: url("../assets/safe.png") no-repeat center;
       width: 15px;
-      height: 14px;
+      height: 15px;
       display: inline-block; }
 
 .terms-and-conditions {
@@ -694,3 +788,5 @@ template {
   color: #585858;
   width: 400px;
   margin-top: 10px; }
+  .terms-and-conditions .tc-link {
+    color: #333; }

@@ -1,4 +1,8 @@
 const startTimer = () => {
+  if (!document.querySelector(".section-plans__item_header-time")) {
+    return false;
+  }
+
   const countDownDate = new Date("December 31, 2019 23:59:59").getTime();
   const className = document.querySelector(".section-plans__item_header-time");
 
@@ -18,3 +22,21 @@ const startTimer = () => {
 };
 
 startTimer();
+
+const setPlanType = () => {
+  const elementClicked = document.querySelectorAll(
+    ".section-plans__item_button"
+  );
+
+  elementClicked.forEach(el => {
+    el.addEventListener("click", e => {
+      if (el.dataset.identifier) {
+        localStorage.setItem("plan", "trial");
+      } else {
+        localStorage.setItem("plan", "annual");
+      }
+    });
+  });
+};
+
+setPlanType();

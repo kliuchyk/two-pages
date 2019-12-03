@@ -43,7 +43,7 @@
             <div class="inner-wrapper">
               <div class="plan-description">
                 <div class="section-plans__item_icon">
-                  <img src="./assets/trial-plan.png" alt="" />
+                  <img src="./assets/trial-plan.png" alt="trial plan" />
                 </div>
                 <div class="about">
                   <h3 class="section-plans__item_title">Trial</h3>
@@ -60,18 +60,24 @@
             </div>
           </div>
 
-          <div class="section-plans__item annual">
-            <div class="section-plans__item_icon">
-              <img src="./assets/annual-plan.png" alt="annual plan" />
+          <div class="section-plans__item annual-plan">
+            <div class="inner-wrapper">
+              <div class="plan-description">
+                <div class="section-plans__item_icon">
+                  <img src="./assets/annual-plan.png" alt="annual plan" />
+                </div>
+                <div class="about">
+                  <h3 class="section-plans__item_title">Annual Plan</h3>
+                  <div class="section-plans__item_price">
+                    $39.00 <span class="postfix">/ year</span>
+                  </div>
+                  <div class="section-plans__item_description">
+                    Your Premium plan will auto-renew. Cancel any time.
+                  </div>
+                </div>
+              </div>
+              <a href="index.html" class="section-plans__item_button">Change</a>
             </div>
-            <h3 class="section-plans__item_title">Annual Plan</h3>
-            <div class="section-plans__item_price">
-              $39.00 <span class="postfix">/ year</span>
-            </div>
-            <div class="section-plans__item_description">
-              Your Premium plan will auto-renew. Cancel any time.
-            </div>
-            <a href="#" class="section-plans__item_button">Change</a>
           </div>
 
           <div class="section-cards"></div>
@@ -82,26 +88,59 @@
                 >Card number<input
                   class="input"
                   type="text"
+                  name="card"
+                  minlength="12"
+                  maxlength="22"
                   placeholder="Enter card number"
               /></label>
+              <img src="./assets/success.png" alt="" class="img-success" />
+              <img src="./assets/fail.png" alt="" class="img-fail" />
+              <p class="error-msg">
+                Minimum length 12 <br />
+                Credit card number is not valid
+              </p>
             </div>
             <div class="exp-month">
               <label class="label"
-                >Exp. month <input class="input" type="text" placeholder="Month"
-              /></label>
+                >Exp. month
+                <select class="select" name="month">
+                  <option selected value="-1">Month</option>
+                  <option value="1">1 - Jan</option>
+                  <option value="2">2 - Feb</option>
+                  <option value="3">3 - Mar</option>
+                  <option value="4">4 - Apr</option>
+                  <option value="5">5 - May</option>
+                  <option value="6">6 - June</option>
+                  <option value="7">7 - July</option>
+                  <option value="8">8 - Aug</option>
+                  <option value="9">9 - Sept</option>
+                  <option value="10">10 - Oct</option>
+                  <option value="11">11 - Nov</option>
+                  <option value="12">12 - Dec</option>
+                </select></label
+              >
             </div>
             <div class="exp-year">
               <label class="label"
                 >Exp. year
-                <select type="number" class="select">
-                  <option default value="2019">Year</option>
+                <select class="select" name="year">
+                  <option selected value="-1">Year</option>
                   <option value="2019">2019</option>
                   <option value="2020">2020</option>
                   <option value="2021">2021</option>
                   <option value="2022">2022</option>
                   <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
                 </select></label
               >
+              <img src="./assets/success.png" alt="" class="img-success" />
+              <img src="./assets/fail.png" alt="" class="img-fail" />
             </div>
             <div class="fname">
               <label class="label">
@@ -110,6 +149,7 @@
                   type="text"
                   placeholder="Enter First Name"
                   class="input"
+                  name="fname"
                 />
               </label>
             </div>
@@ -120,6 +160,7 @@
                   type="text"
                   placeholder="Enter Last Name"
                   class="input"
+                  name="lname"
                 />
               </label>
             </div>
@@ -131,7 +172,7 @@
           <div class="terms-and-conditions">
             Your card will be automatically attached to your profile, you can
             remove it at any time. By clicking “Confirm” you agree to the
-            <a href="#">Terms & Conditions</a>
+            <a href="#" class="tc-link">Terms & Conditions</a>
           </div>
         </div>
 
@@ -236,5 +277,7 @@
       </div>
     </footer>
     <script src="script.js"></script>
+    <script src="getPlanType.js"></script>
+    <script src="validateForm.js"></script>
   </body>
 </html>
