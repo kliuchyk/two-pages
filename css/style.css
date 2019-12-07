@@ -313,8 +313,12 @@ template {
   margin: 0 auto; }
 
 .section-outer {
-  padding-left: 20px;
-  padding-right: 20px; }
+  padding-left: 85px;
+  padding-right: 85px; }
+  @media (max-width: 1199px) {
+    .section-outer {
+      padding-left: 40px;
+      padding-right: 40px; } }
 
 .section-header {
   height: 85px;
@@ -337,6 +341,10 @@ template {
     justify-content: space-between;
     align-items: center;
     height: 100%; }
+  @media (max-width: 767px) {
+    .section-header .section-inner {
+      flex-direction: column;
+      justify-content: space-evenly; } }
 
 .section-title {
   max-width: 920px;
@@ -349,10 +357,19 @@ template {
     letter-spacing: 0.52px;
     text-align: center;
     color: #333; }
+  @media (max-width: 991px) {
+    .section-title {
+      max-width: 650px; }
+      .section-title__header {
+        font-size: 22px; } }
 
 .section-plans .section-inner {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center; }
+  .section-plans .section-inner .items-wrapper {
+    display: flex; }
 
 .section-plans__item {
   font-family: "Open Sans", sans-serif;
@@ -476,12 +493,66 @@ template {
     left: -20px; }
 
 @media (max-width: 767px) {
-  .section-plans .section-inner {
+  .section-plans .items-wrapper {
     flex-direction: column; }
-  .section-plans__info {
-    order: -1; }
   .section-plans__item, .section-plans__info {
-    margin: 0 auto 30px; } }
+    margin: 0 auto 30px;
+    width: 280px; }
+  .section-plans__info-banner_image {
+    max-width: 100%;
+    left: 0; }
+  .section-plans__info-banner_text {
+    top: 8px;
+    left: 40px;
+    max-width: 70%; }
+  .section-plans__item_header-title {
+    font-size: 20px; }
+  .section-plans__item_header-time {
+    font-size: 18px; }
+  .section-plans__item_description {
+    margin-bottom: 15px; }
+  .section-plans__item_button {
+    margin-bottom: 15px;
+    height: 50px;
+    width: 200px;
+    padding: 16px 40px; }
+  .section-plans__item.annual-plan {
+    padding-top: 20px; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .section-plans .items-wrapper {
+    width: 100%;
+    margin-bottom: 35px;
+    justify-content: space-around; }
+  .section-plans__item {
+    width: 320px; } }
+
+@media (min-width: 1200px) {
+  .section-plans__item {
+    width: 350px; }
+    .section-plans__item_header-title {
+      font-size: 22px; }
+  .section-plans__info {
+    width: 300px;
+    margin-left: 70px; }
+    .section-plans__info-banner_image {
+      left: -58px; }
+    .section-plans__info-banner_text {
+      left: 20px; }
+  .section-plans__item + .section-plans__item {
+    margin-left: 20px; }
+  .section-plans .section-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; } }
+
+@media (min-width: 1300px) {
+  .section-plans__item + .section-plans__item {
+    margin-left: 80px; } }
+
+@media (min-width: 1350px) {
+  .section-plans__item + .section-plans__item {
+    margin-left: 85 px; } }
 
 .section-comments__list {
   display: flex; }
@@ -508,7 +579,7 @@ template {
       color: #646464;
       letter-spacing: 0.3px;
       padding-right: 30px; }
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     .section-comments__list {
       flex-direction: column; }
       .section-comments__list-item {
@@ -558,7 +629,15 @@ template {
     text-align: center; }
   @media (max-width: 767px) {
     .section-footer .link + .link::before {
-      padding: 0 15px; } }
+      padding: 0 15px; }
+    .section-footer .section-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    .section-footer__logo, .section-footer__links {
+      position: static;
+      transform: none;
+      padding-top: 10px; } }
 
 .section-plans.form-page .annual-plan,
 .section-plans.form-page .limited-offer {
@@ -572,11 +651,19 @@ template {
     border-top-right-radius: 7px; }
   .section-plans .form-wrapper .section-plans__item {
     width: 100%; }
+    @media (max-width: 768px) {
+      .section-plans .form-wrapper .section-plans__item .plan-description {
+        flex-direction: column; } }
     .section-plans .form-wrapper .section-plans__item_header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      padding: 7px 15px; }
+      padding: 10px; }
+      @media (max-width: 768px) {
+        .section-plans .form-wrapper .section-plans__item_header {
+          flex-direction: column;
+          align-items: center;
+          padding: 7px 0; } }
       .section-plans .form-wrapper .section-plans__item_header-title {
         font-size: 18px;
         line-height: 24px;
@@ -642,12 +729,101 @@ template {
         line-height: 26px; }
         .section-plans .form-wrapper .section-plans__item.annual-plan .section-plans__item_price .postfix {
           margin-left: 5px; }
+  @media (max-width: 576px) {
+    .section-plans .form-wrapper .input:not(:placeholder-shown) {
+      width: 80%; } }
+  @media (max-width: 991px) {
+    .section-plans .form-wrapper {
+      margin-right: 0; }
+      .section-plans .form-wrapper .exp-year {
+        margin-left: 0; }
+      .section-plans .form-wrapper .exp-year::before {
+        content: ""; }
+      .section-plans .form-wrapper .card-number,
+      .section-plans .form-wrapper .fname,
+      .section-plans .form-wrapper .exp-month,
+      .section-plans .form-wrapper .exp-year,
+      .section-plans .form-wrapper .lname {
+        width: 100%; }
+        .section-plans .form-wrapper .card-number .input,
+        .section-plans .form-wrapper .card-number .select,
+        .section-plans .form-wrapper .fname .input,
+        .section-plans .form-wrapper .fname .select,
+        .section-plans .form-wrapper .exp-month .input,
+        .section-plans .form-wrapper .exp-month .select,
+        .section-plans .form-wrapper .exp-year .input,
+        .section-plans .form-wrapper .exp-year .select,
+        .section-plans .form-wrapper .lname .input,
+        .section-plans .form-wrapper .lname .select {
+          width: 100%; }
+        .section-plans .form-wrapper .card-number .input:not(:placeholder-shown),
+        .section-plans .form-wrapper .fname .input:not(:placeholder-shown),
+        .section-plans .form-wrapper .exp-month .input:not(:placeholder-shown),
+        .section-plans .form-wrapper .exp-year .input:not(:placeholder-shown),
+        .section-plans .form-wrapper .lname .input:not(:placeholder-shown) {
+          width: 90%; }
+      .section-plans .form-wrapper .section-plans__item,
+      .section-plans .form-wrapper .section-cards,
+      .section-plans .form-wrapper .section-form,
+      .section-plans .form-wrapper .terms-and-conditions {
+        width: 80%;
+        margin: 0 auto; }
+      .section-plans .form-wrapper .section-plans__item .inner-wrapper {
+        flex-direction: column; }
+      .section-plans .form-wrapper .section-plans__item.limited-offer_header {
+        flex-direction: column; }
+      .section-plans .form-wrapper .section-plans__item_header-title {
+        font-size: 15px; }
+      .section-plans .form-wrapper .section-plans__item_header-time {
+        font-size: 14px; }
+      .section-plans .form-wrapper .section-plans__item_button {
+        margin: 5px 0 10px 0; }
+      .section-plans .form-wrapper .section-plans__item_description {
+        width: 180px; }
+      .section-plans .form-wrapper .section-cards {
+        margin-top: 20px; }
+        .section-plans .form-wrapper .section-cards .cards-img {
+          display: inline-block;
+          max-width: 100%;
+          height: auto; }
+      .section-plans .form-wrapper .secure-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column; }
+        .section-plans .form-wrapper .secure-info .confirm-btn {
+          width: 100%;
+          margin: 10px 0; }
+      .section-plans .form-wrapper .terms-and-conditions {
+        margin: 20px auto; } }
+  @media (min-width: 1200px) {
+    .section-plans .form-wrapper .section-plans__item + .section-plans__item {
+      margin-left: 0; } }
+
+.form-wrapper + .section-plans__info {
+  width: 300px;
+  padding: 0; }
+  .form-wrapper + .section-plans__info .section-plans__info-banner_text {
+    top: 10px;
+    left: 43px; }
+  @media (max-width: 1199px) {
+    .form-wrapper + .section-plans__info {
+      margin-top: 25px; }
+      .form-wrapper + .section-plans__info .section-plans__info-banner_image {
+        left: -62px; }
+      .form-wrapper + .section-plans__info .section-plans__info-banner_text {
+        top: 14px;
+        left: 20px; } }
+  @media (min-width: 992px) {
+    .form-wrapper + .section-plans__info {
+      width: 350px;
+      padding: 0 35px; }
+      .form-wrapper + .section-plans__info .section-plans__info-banner_text {
+        left: 50px; } }
 
 .section-cards {
   width: 470px;
   height: 30px;
-  margin: 15px 0 20px;
-  background: url("../assets/payments.png") center no-repeat; }
+  margin: 15px 0 20px; }
 
 .section-form {
   font-family: "Open Sans", sans-serif;
@@ -665,7 +841,8 @@ template {
     margin-top: 5px;
     margin-right: 10px;
     font-size: 15px;
-    color: #333; }
+    color: #333;
+    outline: none; }
     .section-form .input::placeholder,
     .section-form .select::placeholder {
       color: #b6b6b6; }
@@ -684,28 +861,28 @@ template {
   .section-form .fname,
   .section-form .lname {
     margin-bottom: 15px; }
+  .section-form .input:not(:placeholder-shown) {
+    width: 220px;
+    margin-right: 40px; }
+  .section-form .img-success {
+    display: none;
+    position: absolute;
+    right: 12px;
+    bottom: 8px; }
+  .section-form .img-fail {
+    display: none;
+    position: absolute;
+    right: 12px;
+    bottom: 8px; }
+  .section-form .error-msg {
+    display: none;
+    color: #e24c2c;
+    font-size: 10px;
+    line-height: 14px;
+    margin-top: 5px;
+    position: absolute; }
   .section-form .card-number {
     position: relative; }
-    .section-form .card-number .input:not(:placeholder-shown) {
-      width: 220px;
-      margin-right: 40px; }
-    .section-form .card-number .img-success {
-      display: none;
-      position: absolute;
-      right: 12px;
-      bottom: 8px; }
-    .section-form .card-number .img-fail {
-      display: none;
-      position: absolute;
-      right: 12px;
-      bottom: 8px; }
-    .section-form .card-number .error-msg {
-      display: none;
-      color: #e24c2c;
-      font-size: 10px;
-      line-height: 14px;
-      margin-top: 5px;
-      position: absolute; }
   .section-form .fname {
     position: relative; }
     .section-form .fname .input:not(:placeholder-shown) {
@@ -766,7 +943,8 @@ template {
     font-weight: bold;
     padding: 10px 30px;
     text-decoration: none;
-    margin-right: 15px; }
+    margin-right: 15px;
+    outline: none; }
     .section-form .secure-info .confirm-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed; }

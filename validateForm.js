@@ -1,9 +1,9 @@
 const form = document.forms[0];
 const fName = form.querySelector('input[name="fname"]');
+const lName = form.querySelector('input[name="lname"]');
 const card = form.querySelector('input[name="card"]');
 const month = form.querySelector('input[name="month"]');
 const year = form.querySelector('input[name="year"]');
-const lname = form.querySelector('input[name="lname"]');
 
 const validateCardNumber = () => {
   card.addEventListener("keypress", e => {
@@ -19,18 +19,34 @@ const validateCardNumber = () => {
     if (card.value) {
       document.querySelector(".card-number .img-success").style.display =
         "block";
+    } else if (!card.value) {
+      document.querySelector(".card-number .img-success").style.display =
+        "none";
     }
   });
 };
 
 validateCardNumber();
 
-const validateFirstName = () => {
+const validateNames = () => {
   fName.addEventListener("input", e => {
     if (fName.value) {
+      document.querySelector(".fname .img-success").style.display = "block";
+    } else if (!fName.value) {
+      document.querySelector(".fname .img-success").style.display = "none";
+    }
+  });
+
+  lName.addEventListener("input", e => {
+    if (lName.value) {
+      document.querySelector(".lname .img-success").style.display = "block";
+    } else if (!lName.value) {
+      document.querySelector(".lname .img-success").style.display = "none";
     }
   });
 };
+
+validateNames();
 
 const validateForm = () => {
   form.addEventListener("submit", e => {

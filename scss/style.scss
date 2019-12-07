@@ -42,7 +42,6 @@ $screen-xl: 1200px;
 $screen-sm-max: 767px;
 $screen-md-max: 991px;
 $screen-lg-max: 1199px;
-$screen-xl-max: 1200px;
 
 // === common styles ===
 * {
@@ -57,8 +56,13 @@ $screen-xl-max: 1200px;
 }
 
 .section-outer {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 85px;
+  padding-right: 85px;
+
+  @media (max-width: $screen-lg-max) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 // === section-header ===
@@ -91,6 +95,13 @@ $screen-xl-max: 1200px;
     align-items: center;
     height: 100%;
   }
+
+  @media (max-width: $screen-sm-max) {
+    .section-inner {
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+  }
 }
 
 // === section-title ===
@@ -107,6 +118,14 @@ $screen-xl-max: 1200px;
     text-align: center;
     color: $dark-grey;
   }
+
+  @media (max-width: $screen-md-max) {
+    max-width: 650px;
+
+    &__header {
+      font-size: 22px;
+    }
+  }
 }
 
 // === section-plans ===
@@ -114,6 +133,12 @@ $screen-xl-max: 1200px;
   .section-inner {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    .items-wrapper {
+      display: flex;
+    }
   }
 
   &__item {
@@ -211,7 +236,6 @@ $screen-xl-max: 1200px;
   &__info {
     @include open-sans-font;
     width: 350px;
-    // flex: 1 1 350px;
     position: relative;
     top: 0;
     left: 0;
@@ -267,15 +291,109 @@ $screen-xl-max: 1200px;
   }
 
   @media (max-width: $screen-sm-max) {
-    .section-inner {
+    .items-wrapper {
       flex-direction: column;
     }
-    &__info {
-      order: -1;
-    }
+
     &__item,
     &__info {
       margin: 0 auto 30px;
+      width: 280px;
+    }
+
+    &__info {
+      &-banner_image {
+        max-width: 100%;
+        left: 0;
+      }
+
+      &-banner_text {
+        top: 8px;
+        left: 40px;
+        max-width: 70%;
+      }
+    }
+
+    &__item {
+      &_header-title {
+        font-size: 20px;
+      }
+
+      &_header-time {
+        font-size: 18px;
+      }
+
+      &_description {
+        margin-bottom: 15px;
+      }
+
+      &_button {
+        margin-bottom: 15px;
+        height: 50px;
+        width: 200px;
+        padding: 16px 40px;
+      }
+
+      &.annual-plan {
+        padding-top: 20px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: $screen-md) and (max-width: $screen-lg-max) {
+    .items-wrapper {
+      width: 100%;
+      margin-bottom: 35px;
+      justify-content: space-around;
+    }
+
+    &__item {
+      width: 320px;
+    }
+  }
+
+  @media (min-width: $screen-xl) {
+    &__item {
+      width: 350px;
+
+      &_header-title {
+        font-size: 22px;
+      }
+    }
+
+    &__info {
+      width: 300px;
+      margin-left: 70px;
+
+      &-banner_image {
+        left: -58px;
+      }
+
+      &-banner_text {
+        left: 20px;
+      }
+    }
+
+    &__item + &__item {
+      margin-left: 20px;
+    }
+
+    .section-inner {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    &__item + &__item {
+      margin-left: 80px;
+    }
+  }
+
+  @media (min-width: 1350px) {
+    &__item + &__item {
+      margin-left: 85 px;
     }
   }
 }
@@ -319,7 +437,7 @@ $screen-xl-max: 1200px;
     }
   }
 
-  @media (max-width: $screen-sm-max) {
+  @media (max-width: $screen-md-max) {
     flex-direction: column;
 
     &-item {
@@ -392,6 +510,19 @@ $screen-xl-max: 1200px;
     .link + .link::before {
       padding: 0 15px;
     }
+
+    .section-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__logo,
+    &__links {
+      position: static;
+      transform: none;
+      padding-top: 10px;
+    }
   }
 }
 
@@ -416,11 +547,23 @@ $screen-xl-max: 1200px;
     .section-plans__item {
       width: 100%;
 
+      @media (max-width: $screen-md) {
+        .plan-description {
+          flex-direction: column;
+        }
+      }
+
       &_header {
         display: flex;
         align-items: baseline;
         justify-content: space-between;
-        padding: 7px 15px;
+        padding: 10px;
+
+        @media (max-width: $screen-md) {
+          flex-direction: column;
+          align-items: center;
+          padding: 7px 0;
+        }
 
         &-title {
           font-size: 18px;
@@ -516,6 +659,139 @@ $screen-xl-max: 1200px;
         }
       }
     }
+
+    @media (max-width: $screen-sm) {
+      .input:not(:placeholder-shown) {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: $screen-md-max) {
+      margin-right: 0;
+
+      .exp-year {
+        margin-left: 0;
+      }
+
+      .exp-year::before {
+        content: "";
+      }
+
+      .card-number,
+      .fname,
+      .exp-month,
+      .exp-year,
+      .lname {
+        width: 100%;
+
+        .input,
+        .select {
+          width: 100%;
+        }
+
+        .input:not(:placeholder-shown) {
+          width: 90%;
+        }
+      }
+
+      .section-plans__item,
+      .section-cards,
+      .section-form,
+      .terms-and-conditions {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .section-plans__item {
+        .inner-wrapper {
+          flex-direction: column;
+        }
+
+        &.limited-offer {
+          &_header {
+            flex-direction: column;
+          }
+        }
+
+        &_header-title {
+          font-size: 15px;
+        }
+
+        &_header-time {
+          font-size: 14px;
+        }
+
+        &_button {
+          margin: 5px 0 10px 0;
+        }
+
+        &_description {
+          width: 180px;
+        }
+      }
+
+      .section-cards {
+        margin-top: 20px;
+        .cards-img {
+          display: inline-block;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+
+      .secure-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .confirm-btn {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+
+      .terms-and-conditions {
+        margin: 20px auto;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .section-plans__item + .section-plans__item {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .form-wrapper + &__info {
+    width: 300px;
+    padding: 0;
+
+    .section-plans__info-banner_text {
+      top: 10px;
+      left: 43px;
+    }
+
+    @media (max-width: $screen-lg-max) {
+      margin-top: 25px;
+
+      .section-plans__info-banner_image {
+        left: -62px;
+      }
+
+      .section-plans__info-banner_text {
+        top: 14px;
+        left: 20px;
+      }
+    }
+
+    @media (min-width: $screen-lg) {
+      width: 350px;
+      padding: 0 35px;
+
+      .section-plans__info-banner_text {
+        left: 50px;
+      }
+    }
   }
 }
 
@@ -523,7 +799,6 @@ $screen-xl-max: 1200px;
   width: 470px;
   height: 30px;
   margin: 15px 0 20px;
-  background: url("../assets/payments.png") center no-repeat;
 }
 
 .section-form {
@@ -544,6 +819,7 @@ $screen-xl-max: 1200px;
     margin-right: 10px;
     font-size: 15px;
     color: $dark-grey;
+    outline: none;
 
     &::placeholder {
       color: #b6b6b6;
@@ -571,36 +847,36 @@ $screen-xl-max: 1200px;
     margin-bottom: 15px;
   }
 
+  .input:not(:placeholder-shown) {
+    width: 220px;
+    margin-right: 40px;
+  }
+
+  .img-success {
+    display: none;
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+  }
+
+  .img-fail {
+    display: none;
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+  }
+
+  .error-msg {
+    display: none;
+    color: #e24c2c;
+    font-size: 10px;
+    line-height: 14px;
+    margin-top: 5px;
+    position: absolute;
+  }
+
   .card-number {
     position: relative;
-
-    .input:not(:placeholder-shown) {
-      width: 220px;
-      margin-right: 40px;
-    }
-
-    .img-success {
-      display: none;
-      position: absolute;
-      right: 12px;
-      bottom: 8px;
-    }
-
-    .img-fail {
-      display: none;
-      position: absolute;
-      right: 12px;
-      bottom: 8px;
-    }
-
-    .error-msg {
-      display: none;
-      color: #e24c2c;
-      font-size: 10px;
-      line-height: 14px;
-      margin-top: 5px;
-      position: absolute;
-    }
   }
 
   .fname {
@@ -687,6 +963,7 @@ $screen-xl-max: 1200px;
       padding: 10px 30px;
       text-decoration: none;
       margin-right: 15px;
+      outline: none;
 
       &:disabled {
         opacity: 0.5;
