@@ -401,6 +401,14 @@ $screen-lg-max: 1199px;
 // === section-comments ===
 .section-comments__list {
   display: flex;
+  position: relative;
+
+  padding-bottom: 200px;
+
+  .comments-group {
+    display: flex;
+    position: absolute;
+  }
 
   &-item {
     display: flex;

@@ -555,7 +555,12 @@ template {
     margin-left: 85 px; } }
 
 .section-comments__list {
-  display: flex; }
+  display: flex;
+  position: relative;
+  padding-bottom: 200px; }
+  .section-comments__list .comments-group {
+    display: flex;
+    position: absolute; }
   .section-comments__list-item {
     display: flex;
     font-family: "Open Sans", sans-serif;
